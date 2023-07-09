@@ -1,0 +1,1218 @@
+<!doctype html>
+<html>
+<head>
+    <title>My First Assignment</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+	html{
+        scroll-behavior: smooth;
+    	}
+    * {
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    body {
+        background: #fefefe;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin:0;
+        padding:0;
+    }
+    #topbar {
+    background-color: aliceblue;
+    width: 100%;
+    height: 60px;
+    color: #6c6c6c;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    }
+    .fixed-width {
+    width: 1060px;
+    height: 60px;
+    background-color: #efefef;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    }
+    .logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    }
+    .image {
+        box-sizing: border-box;
+        height:60px;
+        border:chocolate 1.5px solid;
+        float:left;
+    }
+    .rest-name:hover{
+        transform:perspective(200px) translateZ(30px);
+     }
+    .sep-color{
+        
+        color:chocolate;
+    }
+          
+    .topmenu {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    }
+     a {
+         text-decoration:none;
+         color:#6c6c6c ;
+         padding:15px;
+               
+        
+     }
+     .translate:hover {
+         transform: perspective(400px)  translateZ(50px);
+      }
+      .translate:active{
+         transform:   translateY(5px);
+      }
+      .translate>a:hover {
+        color:darkgoldenrod;
+	transform: scale(1.1, 1.1);
+      }
+     .clear {
+         clear: both;
+     }
+     .rest-img-div {
+         padding-top:50px;
+     }
+     .rest-img {
+         width:100%;
+         height:350px;
+         float:left;
+        
+     }
+     @keyframes moveintop {
+         0% {
+             opacity:0;
+             transform:translateY(-100px);
+         }
+         100% {
+             opacity:1;
+             transform: translate(0);
+         }
+     }
+     .Search {
+    	width: 300px;
+    	height: 35px;
+    	margin: 0 20px;
+    	padding-left: 15px;
+    	padding-right: 30px;
+    	background-image: url(images/search-img.png);
+    	background-repeat: no-repeat;
+    	background-position: right center;
+    	border-radius: 5px;
+    	animation: moveintop .5s ease-out .75s;
+    	animation-fill-mode: backwards;
+    	backface-visibility: hidden;
+    }
+     .Search:hover{
+        transform:translateY(-2px);
+        color:black;
+         box-shadow:0 10px 20px rgba(0,0,0,.2)
+     }
+     .Search2{
+         font-size:1.2em;
+         width:50%;
+         height:50px;
+         display:inline-block;
+         margin-top:15px;
+         padding-left:15px;
+         padding-right:30px;
+         background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAdVBMVEX///8AAACnp6d/f3/m5ubv7+/7+/u2trbR0dGFhYWhoaHz8/Pa2to0NDTHx8cuLi6amppAQECzs7OLi4tdXV3Dw8Otra1SUlJXV1diYmIcHBwYGBg/Pz9ycnI3NzecnJwRERHg4OAmJiZ4eHhKSkppaWmRkZFR2VbRAAADTElEQVR4nO3b6XaqMBSG4SKgIo5Vau1g1ar3f4m1JUGkVJI2FLbrfX6ehrX2ZyBk4NzdAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBQ8fDh+LocjWaraDAOmq7GubCz9C6Mon7TNbk0XnglJtNu04U5kozK8n2Z30LGYPljvk+9puv7s87VfCePcdMl/s2qKuCJ5CEn3uWTzKJeP4jjcDh+uwwu904Nns4pRoMw/6fuOB9y0FSFfxQ+ZxHWyfc/B+/niJ3/r86FXVWA4SxrUfILtF92G778PEU7ZhEFTuOy18TqWqte9jP8V13OBLr01+vtxrrd8X/qcufRpAc/JULvU9016+qmA9V0UX9VLq0tOkYvPLa1V+VQ3+ZVHqvGh7qrckm9KSZmrfWwG1Y3bQvdK4bv8e6TuMnbfVrxzrT9W9p+VmdNbqmxY2raPpR2m+q7zvwNp96eYpZRgfG7UFNjzby+mtxS05R38yuG6RX7+mpySw0c9xaXqAextpIcm6flji0uEZbwNS13aHHJTNZgurBfLDzKWl/8IuEvLmnSwX6tsJd1l0ZpuTY7vWqOIOUYY2o/QxE2lqqJd2R+xTa9Qsx21NZ6hqK23Pz6anJLLw/NT5XUG/ShxqLc2lsW3PXsR99mqe0z4xWtenANNz3aQG8Hm74vXtLmYhZPd9ltujRrnYi7Sc/HEWZbURvrsbcFVMKNySRlbvVztMWDqtpgl1fvHgsaZ75MVN2V+23ZIZXNgrkNdM9UHWCH6iGsOoVrIV9HvLqTHWyMmrVT9q3XlRl4dj5a3dktlD1g3vqnHZvIy5MzK9X65+L9ssV7zyuQ14tJrnq/0I9xp+SLRXkR84+Zt/YTtdEU9welH5xKvFG3z8UMz5NNWTS5vdg9XMtzExG/jyeXfL/wDwIjdqPSaF9m/dzUQJH3LJ5GlmNpPG+RrpBvoBdP/ZisimPOy/mD05uIeAo5HETqhGl3OCYXU4AbiaiUrolv4VmsUIwo5psFc8WIwv+PQplCRNmPYrnLiKI+4zN1EbHyy1uR8hHFfRRtJhdR0v63jSyipCMMO2oGa3F8LM52vt9HNt8aAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBzPgDXThgu2buVigAAAABJRU5ErkJggg==);
+    	 background-size: contain;
+    	 background-repeat: no-repeat;
+    	 background-position: right center;
+         border-radius: 5px;
+         border:3px solid black;
+        
+     }
+     .Search2:hover{
+        transform:translateY(-2px) ;
+        color:black;
+         box-shadow:0 10px 20px rgba(0,0,0,.2)
+
+     }
+     #Home {
+         padding-top:60px;
+         width:100%;
+         display:flex;
+         flex-direction: row;
+         flex-wrap:nowrap ;
+     }
+     .intro-description {
+         margin-left:10px;
+        flex:1;
+         
+     }
+          .cover-page-div {
+       flex:1;
+       margin-right:2%;
+       overflow: hidden;
+     }
+
+     .cover-page-div img{
+       width:100%;
+       display:block;
+       transition: all 0.4s;
+     }
+     .cover-page-div img:hover{
+        transform:scale(1.1) ;
+     }
+     .btn:link,.btn:visited  {
+         margin-top:50px;
+         margin-left:15px;
+         padding : 15px 30px;
+         display:inline-block;
+         border-radius: 100px;
+         animation: moveinleft .5s ease-out .75s;
+         animation-fill-mode: backwards;
+         backface-visibility: hidden;
+         position: relative;
+     }
+     .btn:hover {
+         transform:translateY(-3px);
+         box-shadow:0 10px 20px rgba(0,0,0,.4)
+	 transition:3s;
+     }
+     .btn:active {
+         transform: perspective(100px) translateZ(-20px);
+        
+     }
+     .btn-skin{
+         background-color:#e8b971;
+         color:#023167;
+         font-weight:bolder;
+     }
+     .btn::after {
+         content:"";
+         display:inline-block;
+         height:100%;
+         width:100%;
+         border-radius:100px;
+         position: absolute;
+         top: 0;
+         left: 0;
+         z-index:-1;
+         transition: all .4s;
+     }
+     .btn-skin::after{
+         background-color:#e8b971;
+     }
+     .btn:hover::after{
+         transform: scaleX(1.4) scaleY(1.6);
+         opacity: 0;
+     }
+     @keyframes moveinleft {
+         0% {
+             opacity:0;
+             transform:translateX(-100px);
+         }
+         100% {
+             opacity:1;
+             transform: translate(0);
+         }
+     }
+     .btn-animated {
+         animation: moveinleft .5s ease-out .75s;
+         animation-fill-mode: backwards;
+     }
+     #Specialities {
+         width:90%;
+         margin:50px auto;
+         padding-top:60px;
+         
+     }
+     #Recommendations {
+         width:90%;
+         margin:50px auto;
+         padding-top:60px;
+     }
+     .heading {
+         text-align: center;
+         margin-bottom:50px;
+     }
+     .row {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(3,1fr);
+    align-content: space-between;
+    justify-content: space-between;
+    column-gap: 4.8rem;
+    row-gap: 2.4rem;
+    align-items: stretch;
+     }
+     .card {
+    background: #fff;
+    border: 1px solid #ccc;
+    transition: .3s;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    overflow: hidden;
+    }
+    .card:hover {
+    box-shadow: 0 0 40px -10px rgb(0 0 0 / 25%);
+    }
+    .card-header {
+    padding: 5px;
+    background: #eeeee4;
+    }
+    .card-header img:hover{
+        transform:scale(1.1);
+    }
+     .dish-img {
+         width:100%;
+	 height:168px;
+     }
+     .add {
+        float:right;
+     }
+     .add::after {
+         
+         margin-top:0px;
+         margin-left:10px;
+         display:inline-block;
+         padding:3px 8px 3px 3px;
+         transform:scale(1.25);
+         border-radius:5px;
+         color:green;
+         
+         content:'ADD+';
+     }
+     .add:hover{
+         transform: translateY(-3px) ;
+         box-shadow:0 10px 20px rgba(0,0,0,.2);
+         background-color: rgb(77, 219, 84);
+         border-radius: 5px;
+         border:2px solid red;
+     }
+     .add:hover::after {
+        color:white;
+     }
+     .add:active{
+         transform: translateY(-10px) ;
+         font-weight:1.2em;
+         background-color: rgb(61, 219, 69);
+         content:'ADDED';
+         padding:3px 8px 3px 3px;
+         border-radius: 5px;
+         border-color:green;
+     }
+     .add:active::after {
+        color:white;
+     }
+     .add:focus{
+        transform:  translateY(-10px) ;
+         font-weight:1.2em;
+        background-color: rgb(61, 219, 69);
+         padding:3px 8px 3px 3px;
+         border-radius: 5px;
+         border-color:green;
+     }
+     .add:focus::after {
+        content:'ADDED';
+        color:white;
+     }
+     .card-body{
+         padding:30px 20px 40px 20px;
+         text-align:center;
+         font-size:15px;
+         color:rgb(28, 13, 94);
+     }
+     
+     .v {
+         background-color: green;
+         color:black;
+         display:inline-block;
+         border-radius:15px;
+         padding:5px;
+         font-weight: bold;
+        }
+        .nv {
+         background-color: red;
+         color:black;
+         display:inline-block;
+         border-radius:15px;
+         padding:5px;
+         font-weight: bold;
+        }
+     .card-body h3 {
+         padding-bottom:5px;
+         float:both;
+     }
+    .card-body .normal{
+        float:left;
+    }
+     .card-body .btn-dash{
+         display:inline-block ;
+         color:#fff;
+         text-align:right center ;
+         background:coral;
+         margin-top:5px;
+        text-decoration: none;
+        padding:10px 5px;
+        border-radius: 100px;
+     }
+   .card-body .btn-dash:hover {
+       transform:perspective(100px) translateZ(10px);
+       transform:scale(1.05);
+   }
+   #footer {
+    background-color:#154c79;
+    width:100%;
+    height:100%;
+    padding: 50px;
+    display:flex;
+ flex-wrap:nowrap ;
+ justify-content: space-around;
+
+   }
+   .social-links {
+       color:azure;
+       display:flex;
+       flex-direction: row;
+       flex-wrap:nowrap;
+   }    
+   .img {
+       box-sizing: border-box;
+       height:35px;
+       border-radius: 5px;
+   }
+   .imgut {
+       clip-path:polygon(18% 0,82% 0,82% 100%,18% 100% );
+       border-radius: 50px;
+       margin-left:-10px;
+       margin-right:-10px;
+   }
+   .img:hover{
+    transform:translateY(-3px);
+         box-shadow:0 10px 20px rgba(0,0,0,.5);
+   }
+   header {
+       text-align: left;
+       transform:translateX(8%);
+       color:azure;
+       
+   }
+   .underline {
+       text-decoration: underline;
+   }
+   .links-h {
+       color:azure;
+   }
+   .links {
+       color:azure;
+       display:flex;
+       flex-direction: column;
+       flex-wrap:nowrap;
+       
+   }
+   
+   .links:hover {
+       color:goldenrod;
+       text-decoration: underline ;
+   }
+   .last-line {
+       color:azure;
+       margin-top:25px;
+       line-height: 25px;
+   }
+   .backtoTop {
+       color:azure;
+     margin-left:-15px;
+     
+   }
+   .backtoTop:hover{
+       text-decoration:underline;
+       color:goldenrod;
+   }
+   .btT {
+       float:right;
+       margin-bottom:15px;
+       margin-right:20px;
+       background-color: aqua;
+       display:inline-block;
+       width:55px;
+       padding:10px 10px;
+       border-radius:10px;
+   }
+   .btT:hover {
+       transform:perspective(100px) translateZ(20px);
+       background-color:chocolate;
+       color:azure;
+
+   }
+   .btT:active {
+       transform:translateY(-3px) ;
+       box-shadow:0 10px 20px rgba(0,0,0,.5);
+   }
+   .T {
+       color:black;
+       padding-left:4px;
+   }
+   .T:hover {
+       color:azure;
+       padding-left:4px;
+   }
+   #Reviews {
+    width:100%;
+         display:flex;
+         flex-direction: row;
+         flex-wrap:nowrap ;
+         padding-top:60px;
+   }
+   .custrev {
+       margin-left:25px;
+       display:flex;
+         flex-direction: column;
+         flex-wrap:nowrap ;
+         width:35%;
+       
+   }
+   .custrev-h {
+    background-color:wheat;
+        border-top-left-radius: 15px;
+        border-end-end-radius:15px ;
+        text-align:center;
+        width:100%;
+        margin-bottom:10px;
+        display:inline-block;
+        padding:25px ;
+        color:black;
+        font-size:1.3em;
+        font-weight:bold;
+   }
+  
+   .custrev-1 {
+    background-color:whitesmoke;
+        border-top-left-radius: 15px;
+        border-end-end-radius:15px ;
+        border:1px solid black;
+        width:100%;
+        margin-bottom:15px;
+        display:inline-block;
+        padding:20px ;
+        padding-left:25%;
+        padding-right:25%;
+        color:#063970;
+        font-size:15px;
+       font-weight:lighter;
+       text-align:left;
+        background-image: url('data:image/jpeg;base64,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');
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: 20%;
+       float:left;
+   }
+   .custrev-2 {
+    background-color:whitesmoke;
+        border-top-left-radius: 15px;
+        border-end-end-radius:15px ;
+        border:1px solid black;
+        width:100%;
+        margin-bottom:15px;
+        display:inline-block;
+        padding:20px ;
+        padding-left:25%;
+        padding-right:25%;
+        color:#063970;
+        font-size:15px;
+       font-weight:lighter;
+       text-align:left;
+        background-image: url('data:image/png;base64,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');
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: 20%;
+       
+   }
+   .custrev-3{
+    background-color:whitesmoke;
+        border-top-left-radius: 15px;
+        border-end-end-radius:15px ;
+        border:1px solid black;
+        width:100%;
+        margin-bottom:15px;
+        display:inline-block;
+        padding:20px ;
+        padding-left:25%;
+        padding-right:25%;
+        color:#063970;
+        font-size:15px;
+       font-weight:lighter;
+       text-align:left;
+        background-image: url('data:image/jpeg;base64,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');
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: 20%;
+       
+   }
+   .custrev-4 {
+    background-color:whitesmoke;
+        border-top-left-radius: 15px;
+        border-end-end-radius:15px ;
+        border:1px solid black;
+        width:100%;
+        margin-bottom:15px;
+        display:inline-block;
+        padding:25px ;
+        padding-left:25%;
+        padding-right:25%;
+        color:#063970;
+        font-size:15px;
+       font-weight:lighter;
+       text-align:center;
+        background-image: url('data:image/png;base64,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');
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: 20%;
+       
+   }
+   .custrev-1:hover{
+       transform: scale(1.05);
+       box-shadow: 0 0 40px -10px rgba(0,0,0,.25);
+   }
+   .custrev-2:hover{
+       transform: scale(1.05);
+       box-shadow: 0 0 40px -10px rgba(0,0,0,.25);
+   }
+   .custrev-3:hover{
+       transform: scale(1.05);
+       box-shadow: 0 0 40px -10px rgba(0,0,0,.25);
+   }
+   .custrev-4:hover{
+       transform: scale(1.05);
+       box-shadow: 0 0 40px -10px rgba(0,0,0,.25);
+   }
+   .cust-name {
+           text-align:left;
+           font-size:30px;
+           font-weight:300;
+       
+   }
+   .rating{
+       position:relative;
+       left:45%;
+       top:20%;
+       width:5em;
+       float:right;
+       clip-path:circle(35px);
+   }
+   .form {
+       width:50%;
+       margin-left:10%;
+   }
+  input[type=text], select, textarea{
+  	  width: 100%;
+    	  padding: 15px;
+    	  padding-right:25px;
+    	  border:3px solid black;
+    	  border-radius: 5px;
+    	  box-sizing: border-box;
+    	  resize: vertical;
+}
+input[type=text]:hover {
+
+    transform: translateY(-1px);
+   box-shadow:0 10px 20px rgba(0,0,0,.2)
+}
+input[type=submit]  {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input[type=radio]  {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+ 
+}
+
+input[type=submit]:hover  {
+  background-color: #14bb6d;
+  transform:perspective(100px) translateZ(20px);
+}
+input[type=submit]:active,input[type=submit]:visited
+ {
+    transform: translateY(-2px);
+   box-shadow:0 10px 20px rgba(0,0,0,.2);
+   background-color:blue;
+}
+
+.form-container  {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+.in_form{
+    margin:15px auto 40px auto;
+}
+ .rev-h{
+    background-color:wheat;
+        border-top-left-radius: 15px;
+        border-end-end-radius:15px ;
+        text-align:center;
+        width:100%;
+        margin-bottom:10px;
+        display:inline-block;
+        padding:25px ;
+        color:black;
+        font-size:1.3em;
+        font-weight:bold;
+}
+.num {
+    width: 3em;
+    display: inline-block;
+    height:3em;
+    border-radius: 50px;
+    border:7px solid black;
+    background-color: white;
+    color:black;
+    font-size:1em;
+    font-weight: 5em;
+}
+.num:hover {
+    transform: translateY(-1px);
+   box-shadow:0 10px 20px rgba(0,0,0,.2);
+    background-color: rgb(77, 219, 84);
+    color:azure;
+}
+.num:active {
+    font-weight:1.5em;
+         background-color: rgb(19, 150, 19);
+}
+.num:focus {
+    font-weight:1.5em;
+        background-color: rgb(19, 150, 19);
+        color:azure;
+}
+h4 {
+    margin-left:30%;
+    margin-bottom:10px;
+}
+
+.sec-name:hover {
+    transform:perspective(200px) translateZ(10px) ;
+    color: #154c79;
+}
+.rsec-name {
+    text-align: center;
+}
+.rsec-name:hover {
+    transform:perspective(200px) translateZ(10px) ;
+    color: #154c79;
+}
+.price {
+    font-size:1.2em;
+}
+.small {
+    font-size: .7em;
+}
+.tag_n_price{
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    margin-top:40px;
+}
+.wah {
+    position: relative;
+    left:30%;
+    top:20px;
+}
+.wah:hover {
+    color:#154c79;
+	transform: translateY(-5px);
+    box-shadow:0 10px 20px rgba(0,0,0,.2);
+    line-height: 25px;
+   
+}
+    </style>       
+</head>
+
+<body>
+      <div id="container">
+           <div id="topbar">
+               <div class="fixed-width" >
+                   <div class="logo">
+                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuOFfEW78z451i57tPp3I5i9TTGlDOW41v4A&usqp=CAU" class="image" />
+                     <div class="rest-name">
+                      <p ><span class="sep-color">TAJ MAHAL</span> </p>
+                    </div>
+                </div>
+
+                <div class="topmenu">
+                    <p class="translate"> <a  href="#Home" > Home  </a> </p>
+                    <p class="translate"> <a href="#Specialities" > Specialities </a> </p>
+                    <p class="translate"><a  href="#Recommendations" > Recommendations  </a> </p>
+                    <p class="translate"><a  href="#Reviews" > Reviews </a> </p>
+                   
+                    
+                        <input type="text" placeholder="Search for nearby branches " class="Search" />
+                    
+                </div>
+                
+               
+               </div>
+                          
+          </div>
+       <div class="rest-img-div" >
+        <img src="https://www.tajhotels.com/content/dam/luxury/hotels/Taj_Mahal_Delhi/images/4x3/the-All-New-Machan.jpg/jcr:content/renditions/cq5dam.web.756.756.jpeg" class="rest-img" />
+
+    </div>
+    <div id="Home" >
+    <div class="intro-description">
+       <p ><h2 class="rsec-name">TAJ MAHAL</h2><br>
+        <span class="effect">Exprience the greatest quality ever. Get started with exploring our specialities, check our recommendations. Also help improving our restaurant by leaving us your valuable feedback.</span></p>
+       <br> After visitng our restaurant, it's impossible to any one from stop saying <br> <span class="wah">"WAH! TAJ" </span><br>
+        <a href="#Specialities" class="btn btn-skin">Specialities</a>
+    </div>
+       <div class="cover-page-div">
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1ve4phhN67apG8t0lzZnN4WNq913503e4uA&usqp=CAU" class="cover-page-img" />
+       </div>
+
+    </div>
+          
+              <div id="Specialities" > 
+           <div class="heading">
+        <h1 class="sec-name">Specialities</h1> <br>
+        <span class="effect">Special items </span> 
+       </div>
+       <div class="row">
+           <div class="card">
+               <div class="card-header">
+                   <img class="dish-img" src="https://www.thespruceeats.com/thmb/0OqhTGqIogJlG6YYpoFs3IKc_8U=/2396x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/malai-kofta-vege-balls-in-a-thick-sauce-1957964_hero-01-474bc099313944668d3b2c68b88549d5.jpg" 
+                   alt="There is a pic of dish called 'Malai Kofta (Paneer Balls in a Thick Sauce)'"/>
+               </div>
+               <div class="card-body">
+                <button class="add"></button>
+                   <p><h3>Malai Kofta (Paneer Balls in a Thick Sauce)</h3>
+                   <span class="normal"> Malai kofta is a dish for special occasions. Combine potatoes, vegetables, paneer cheese, heavy cream, and spices, then form the mixture into balls, and stuff them with chopped nuts and raisins. Finish by deep-frying and serving in a succulent sauce.</span>
+                   <a href="#" class="btn-dash" >Read more...</a> </p>
+                   <div class="tag_n_price">
+                        <div class="v">VEG</div> 
+                        <span class="price">₹999 <span class="small"><strike>₹1,499</strike> Save ₹500 (33%)</span>
+                   </div>
+                </div>
+           </div>
+
+           <div class="card">
+            <div class="card-header">
+                <img class="dish-img"src="https://www.thespruceeats.com/thmb/_o2-rmq12GpCsn9CFeBme9pJTXU=/1600x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/quick-and-easy-baked-vegetarian-samosas-3377863-hero-01-2847c412661144d686bfa4d123232109.jpg"
+                alt="There is a pic of dish called 'Baked Vegetarian Samosas With Phyllo Pastry'"/>
+            </div>
+            <div class="card-body">
+                <button class="add"></button>
+                   <p><h3>Baked Vegetarian Samosas With Phyllo Pastry</h3>
+                    <span class="normal"> 
+                        Traditionally, crispy samosas are made with a flour-based dough seasoned with caraway seeds and then deep-fried in ghee or oil. This recipe bakes them, using phyllo pastry for an extra fast prep. The result is a far cry ,but you may enjoy this.  </span>
+                <a href="#" class="btn-dash" >Read more...</a> </p>
+                <div class="tag_n_price">
+                    <div class="v">VEG</div>
+                    <span class="price">₹1,499 <span class="small"><strike> ₹1,999</strike>Save ₹500 (25%)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <img class="dish-img"src="https://www.thespruceeats.com/thmb/J5z_mmiTmr7ZMbVYJRYxfms_I3o=/2294x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/easy-enchiladas-recipe-2342670-10-5b0d7555ff1b780036416fc6.jpg"
+                alt="There is a pic of dish called '30 Minute Mexican Enchiladas'"/>
+            </div>
+            <div class="card-body">
+                <button class="add"></button>
+                    <p><h3>30 Minute Mexican Enchiladas</h3>
+                    <span class="normal"> 
+                        30 Minute Mexican Enchiladas Recipe
+                         The Spruce
+                        Enchiladas don't have to take all day to make. These 30-minute cheese enchiladas are super easy and delicious. Add your choice of additional fillings, like sautéed peppers, onions, mushrooms, or spinach. Leftovers reheat well, too.</span>
+                <a href="#" class="btn-dash" >Read more...</a> </p>
+                <div class="tag_n_price">
+                    <div class="v">VEG</div>
+                    <span class="price">₹1,099 <span class="small"><strike>₹1,199</strike> Save ₹100 (8%)</span>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <img class="dish-img"src="https://foodiewish.com/wp-content/uploads/2020/03/Hyderabadi-Biryani-foodiewish.jpg"
+                alt="There is a pic of dish called 'Hyderabadi Biryani'"/>
+            </div>
+            <div class="card-body">
+                <button class="add"></button>
+                    <p><h3>Hyderabadi Biryani</h3>
+                    <span class="normal"> 
+                        Hyderabadi Biryani is very much famous all over India and even outside India. It is mostly made with chicken or sometimes mutton and it was the royal food of the Nizams and the Mughals.
+                         There are so many people who you come to India just to taste this food because this Biryani is famous not only in India,but throughout the world.</span>
+                <a href="#" class="btn-dash" >Read more...</a> </p>
+                <div class="tag_n_price">
+                    <div class="nv">NON-VEG</div>
+                    <span class="price">₹899<span class="small"><strike> ₹999</strike> Save ₹100 (10%)</span>
+                </div>
+            </div>
+        </div>
+       
+        <div class="card">
+            <div class="card-header">
+                <img class="dish-img"src="https://foodiewish.com/wp-content/uploads/2020/03/Recheado-masala-fish.jpg"
+                alt="There is a pic of dish called 'Fish Recheado'"/>
+            </div>
+            <div class="card-body">
+                <button class="add"></button>
+                    <p><h3>Fish Recheado</h3>
+                    <span class="normal"> 
+                        If you are a lover of fish and want to taste some Goan recipe then Fish Recheado is a very good choice for you. It is a spicy fried fish from Goa.
+                        Generally, sea fishes are used to make it and sometimes a shallow fried Kari is also made out of it so that it can be complementary with some rice or roti.So, definetely it's a worth to eat this recipe.</span>
+                <a href="#" class="btn-dash" >Read more...</a> </p>
+                <div class="tag_n_price">
+                    <div class="nv">NON-VEG</div>
+                    <span class="price">₹749<span class="small"><strike> ₹799</strike>  Save ₹50 (6%)</span>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <img class="dish-img"src="https://foodiewish.com/wp-content/uploads/2020/03/Rajasthani-Laal-Maas.jpg"
+                alt="There is a pic of dish called 'Laal Maas'"/>
+            </div>
+            <div class="card-body">
+                <button class="add"></button>
+                    <p><h3>Laal Maas</h3>
+                    <span class="normal"> 
+                        “Laal Maas” is a very famous mutton dish from Rajasthan. It is a mutton curry with a lot of chili in it. It is served with bajra roti is in general but if you have them with plain rice, you will be able to enjoy the taste too.
+                        So if you want something spicy in non-veg with Indian style in it, then you must try out Laal Maas for sure.  </span>
+                <a href="#" class="btn-dash" >Read more...</a> </p>
+                <div class="tag_n_price">
+                    <div class="nv">NON-VEG</div>
+                    <span class="price">₹699 <span class="small"><strike>₹759</strike> Save ₹60 (8%)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+             
+    </div>
+    <div id="Recommendations" > 
+        <div class="heading">
+     <h1 class="sec-name">Our Recommendations</h1> <br>
+       <span class="effect">Recommended as per your taste</span>  <br>
+    <input type="text" placeholder="Search here... " class="Search2" />
+    </div>
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                <img class="dish-img" src="https://www.thespruceeats.com/thmb/7V_XV7VtJ8RvzUu5-K-LbZQnxVw=/998x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/BengaliOrangeorRedLentilsWithTomato-TheSpruce-AnastasiiaTretiak-b332e4058cbd4cd090496823d6ec3dca.jpg"
+                alt="There is a pic of dish called 'Masoor Dal'"/>
+            </div>
+            <div class="card-body">
+             <button class="add"></button>
+                <p><h3> Masoor Dal</h3>
+                <span class="normal"> Made with orange or red lentils, tomatoes, green chiles, and fragrant spices, this simple and filling masoor dal makes a lovely meal in itself if you serve it with some rice or naan for dipping. If you want to make it vegan, use margarine or olive oil instead of ghee.And we personally recommend you to taste this South-Indian recipe.</span>
+                <a href="#" class="btn-dash" >Read more...</a> </p>
+                <div class="tag_n_price">
+                    <div class="v">VEG</div>
+                    <span class="price">₹899<span class="small"><strike> ₹999</strike> Save ₹100 (10%)</span>
+                </div>
+             </div>
+        </div>
+
+        <div class="card">
+         <div class="card-header">
+             <img class="dish-img"src="https://www.thespruceeats.com/thmb/gtJhAaB65ESaaTBnfeXP3e3Cx7Y=/1405x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/papdi-chaat-recipe-1958046-step-04-9f5ee18f76854d95b7deb5ea76f7ff9d.jpg"
+             alt="There is a pic of dish called 'Papdi Chaat'"/>
+            </div>
+            <div class="card-body">
+             <button class="add"></button>
+                 <p><h3>Papdi Chaat</h3>
+                 <span class="normal">Tangy, spicy, and satisfyingly crunchy, papdi chaat appears at street vendor stands and fast food stops as a popular snack.This recipe starts by making and frying your own papdi dough, then topping it with cooked veggies and topping with chutneys, sev, cilantro, and seasonings.Surely, you will enjoy eating this.</span>
+                <a href="#" class="btn-dash" >Read more...</a> </p>
+                <div class="tag_n_price">
+                    <div class="v">VEG</div>
+                    <span class="price">₹749<span class="small"><strike>₹799</strike> Save ₹50 (6%)</span>
+                </div>
+             </div>
+        </div>
+
+     <div class="card">
+         <div class="card-header">
+             <img class="dish-img"src="https://www.thespruceeats.com/thmb/mWuI1M6aYxew4KzLBvI4ZqVBPrg=/983x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/FriedPaneerCheesePakora-TheSpruce-AhlamRaffii-cb0ffdcc344447e08c71dbef2f39a330.jpg"
+             alt="There is a pic of dish called 'Fried Paneer Pakora'"/>
+         </div>
+         <div class="card-body">
+             <button class="add"></button>
+                 <p><h3>Fried Paneer Pakora</h3>
+                 <span class="normal"> 
+                    Paneer pakora are a quick evening snack that has a lovely crispy texture with a moist, soft paneer from within. Two words: Fried cheese. Does it get any better? Paneer gets fried up in chickpea flour that takes on a shatteringly crisp texture in this paneer pakora. If you don't want to use ghee, any high-smoke point oil will work too.</span>
+             <a href="#" class="btn-dash" >Read more...</a> </p>
+             <div class="tag_n_price">
+                <div class="v">VEG</div>
+                <span class="price">₹699 <span class="small"><strike>₹759 </strike> Save ₹60 (8%)</span>
+             </div>
+         </div>
+     </div>
+     <div class="card">
+         <div class="card-header">
+             <img class="dish-img"src="https://carminespantry.securetree.com/getmetafile/31a01cd7-c1e9-4b33-b646-5ebd65e64d38/carmines-eggplant"
+             alt="There is a pic of dish called 'Eggplant Parmigiana'"/>
+         </div>
+         <div class="card-body">
+             <button class="add"></button>
+                 <p><h3>Eggplant Parmigiana</h3>
+                 <span class="normal"> 
+                    Eggplant Parmigiana (Parmigiana di Melanzane) is the ultimate comfort food recipe. Fried aubergines/eggplant baked in a dish with tomato sauce, basil, parmesan and mozzarella cheese. This is a roasted chicken recipe where instead of chicken Eggplant are simmered in olive oil by dipping them in tasty flour batter followed by egg-n-spices batter and bread crumbs.</span>
+             <a href="#" class="btn-dash" >Read more...</a> </p>
+             <div class="tag_n_price">
+                <div class="nv">NON-VEG</div>
+                <span class="price">₹999<span class="small"><strike>₹1,499</strike> Save ₹500 (33%)</span>
+             </div>
+         </div>
+     </div>
+    
+     <div class="card">
+         <div class="card-header">
+             <img class="dish-img"src="https://www.thespruceeats.com/thmb/2xqNDN_fKst_thBIHqpsQXTKv7k=/1384x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/rogan-josh-recipe-1957574-hero-01-f52e315a56c342f39c3f4bca2bab8c86.jpg"
+             alt="There is a pic of dish called 'Rogan Josh(Red Lamb)'"/>
+         </div>
+         <div class="card-body">
+             <button class="add"></button>
+                 <p><h3>Rogan Josh(Red Lamb)</h3>
+                 <span class="normal"> 
+                    Rogan Josh, the name of this dish from Kashmir, translates roughly to "red lamb." The color comes from Kashmiri dry red chilies. While the name may sound fiery, the heat of the dish is toned down by the cream that is added at the end.Spices such as cardamom, cumin,turmeric, and garam masala are included. </span>
+             <a href="#" class="btn-dash" >Read more...</a> </p>
+             <div class="tag_n_price">
+                <div class="v">VEG</div>
+                <span class="price">₹1,499<span class="small"><strike> ₹1,999</strike> Save ₹500 (25%)</span>
+             </div>
+         </div>
+     </div>
+     <div class="card">
+         <div class="card-header">
+             <img class="dish-img"src="https://foodiewish.com/wp-content/uploads/2020/03/Chicken-Kolhapuri-foodiewish.jpg"
+             alt="There is a pic of dish called 'Chicken Kolhapuri'"/>
+         </div>
+         <div class="card-body">
+             <button class="add"></button>
+                 <p><h3>Chicken Kolhapuri</h3>
+                 <span class="normal"> 
+                     Chicken Kolhapuri is kind of a must-try dish in India. But there is a saying that you have to keep a full large bowl of sugar with you while testing this dish because it has so many chilies in it. Those chilies make it hot.But if you want to taste something very spicy in India then Chicken Kolhapuri is the best choice for you.And it is available throughout India because of its growing popularity.</span>
+             <a href="#" class="btn-dash" >Read more...</a> </p>
+             <div class="tag_n_price">
+                <div class="nv">NON-VEG</div>
+                <span class="price">₹1,099 <span class="small"><strike>₹1,199 </strike>  Save ₹100 (8%)</span>
+             </div>
+         </div>
+     </div>
+     <div class="card">
+         <div class="card-header">
+             <img class="dish-img"src="https://www.seriouseats.com/thmb/wncR1Y3CAosDPK22hXtb5zSPB0Y=/880x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__images__2015__01__20150120-breaded-pork-tenderloin-sandwich-titus-ruscitti-1-goldies-ice-cream-shoppe-b4c9f854814f4450ae92866477774b68.jpg"
+             alt="There is a pic of dish called 'Breaded Pork Tenderloin'"/>
+         </div>
+         <div class="card-body">
+             <button class="add"></button>
+                 <p><h3>Breaded Pork Tenderloin</h3>
+                 <span class="normal"> 
+                    A slice of Pork loin is pounded down into a patty; marinated in buttermilk, eggs and flour; breaded in saltine crumbs; deep-fried; and served on a hamburger bun with onion, lettuce and tomato.In a large skillet heat oil over medium high heat. Meanwhile, dip tenderloins in egg mixture, then coat with bread crumb mixture. When oil is hot, add coated tenderloin to skillet and fry until golden brown on both sides (not cooked)! </span>
+             <a href="#" class="btn-dash" >Read more...</a> </p>
+             <div class="tag_n_price">
+                <div class="v">VEG</div>
+                <span class="price">₹899<span class="small"><strike> ₹999</strike> Save ₹100 (10%)</span>
+             </div>
+         </div>
+     </div>
+     <div class="card">
+         <div class="card-header">
+             <img class="dish-img"src="https://www.thespruceeats.com/thmb/IH67SVTTP93tSa8eRRUe5GdL_VU=/1593x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/instant-pot-butter-chicken-final-2-5c2b9830c9e77c0001423e28.jpg"
+             alt="There is a pic of dish called 'Instant Pot Butter Chicken'"/>
+         </div>
+         <div class="card-body">
+             <button class="add"></button>
+                <p><h3>Instant Pot Butter Chicken</h3>
+                 <span class="normal"> 
+                    If you love murgh makhani but don't have a lot of time, try Instant Pot butter chicken. It has all the delicious flavors of butter, cream, tomatoes, garlic, and spices like garam masala, cumin, ginger, and coriander, but with less cooking time.  It is a mild Indian curry made primarily with Chicken, yogurt, butter and Fresh Cream.Yes.It's dairy heavy but thats what makes it super delicious. </span>
+             <a href="#" class="btn-dash" >Read more...</a> </p>
+             <div class="tag_n_price">
+                <div class="nv">NON-VEG</div>
+                <span class="price">₹749 <span class="small"><strike>₹799</strike> Save ₹50 (6%)</span>
+             </div>
+         </div>
+     </div>
+     <div class="card">
+        <div class="card-header">
+            <img class="dish-img"src="https://myfoodstory.com/wp-content/uploads/2019/11/Easy-Vegetarian-Lasagna-5.jpg"
+            alt="There is a pic of dish called 'Easy Vegetarian Lasagna'"/>
+        </div>
+        <div class="card-body">
+            <button class="add"></button>
+                <p><h3>Easy Vegetarian Lasagna</h3>
+                <span class="normal"> 
+                    Lasagna is made up of layers consisting of flat pasta, ragu (a meat-based sauce), cheese, seasonings, and various spices. It is an amazing combination of flat pasta, sauces, and cheese.Vegetarian Lasagna is like the queen of casseroles, comfort food and hearty meals! This recipe has everything – 3 different layers, a tomato sauce made from scratch and lots of cheese. Potlucks, birthdays, family dinners – this pasta dish is your answer!</span>
+            <a href="#" class="btn-dash" >Read more...</a> </p>
+            <div class="tag_n_price">
+                <div class="v">VEG</div>
+                <span class="price">₹699<span class="small"><strike> ₹759</strike> Save ₹60 (8%)</span>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <img class="dish-img"src="https://www.thespruceeats.com/thmb/SxIRu8AgdaHqXYKo10Gc9D97D1g=/1643x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/ChickenTandooriSpruce-f238bf7413984e088268565c5b660b11.jpg"
+            alt="There is a pic of dish called 'Tandoori Chicken'"/>
+        </div>
+        <div class="card-body">
+            <button class="add"></button>
+               <p><h3>Tandoori Chicken</h3>
+                <span class="normal"> 
+                    It's hard to find anyone who doesn't fall in love with tandoori chicken, that famous Indian barbecue chicken recipe. Although traditionally cooked in a clay oven, you can prepare the yogurt-marinated chicken in a regular oven (or on the grill). You do need to plan ahead, as the coated chicken should sit in the refrigerator for at least 6 hours or overnight.  </span>
+            <a href="#" class="btn-dash" >Read more...</a> </p>
+            <div class="tag_n_price">
+                <div class="nv">NON-VEG</div>
+                <span class="price">₹999<span class="small"><strike>  ₹1,499</strike>  Save ₹500 (33%)</span>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <img class="dish-img"src="https://www.thespruceeats.com/thmb/oZzyz_ozFovEJP5jcERptTekg4c=/2121x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-842135108-59ed890f685fbe0011d766e8.jpg"
+            alt="There is a pic of dish called 'Chicken Tikka Masala'"/>
+        </div>
+        <div class="card-body">
+            <button class="add"></button>
+               <p><h3>Chicken Tikka Masala</h3>
+                <span class="normal"> 
+                    Chicken tikka masala is a delicious grilled chicken dish  consisting of marinated boneless chicken pieces that are traditionally cooked in a tandoor with a thick, creamy gravy that is unforgettable after the first bite. A tomato-yogurt sauce is spiced with chili, garlic, ginger, and garam masala, the ubiquitous Indian spice blend.  </span>
+            <a href="#" class="btn-dash" >Read more...</a> </p>
+            <div class="tag_n_price">
+                <div class="nv">NON-VEG</div>
+                <span class="price">₹1,499<span class="small"><strike> ₹1,999</strike> Save ₹500 (25%)</span>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <img class="dish-img"src="https://www.thespruceeats.com/thmb/K_Jmf1BeQwG_47iHFmq--uZ7vIU=/1729x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/chettinad-chicken-curry-1957790-hero-01-24d7a00c43054b5abd5c0dcc1c60a31a.jpg"
+            alt="There is a pic of dish called 'Chettinad Chicken Curry'"/>
+        </div>
+        <div class="card-body">
+            <button class="add"></button>
+               <p><h3>Chettinad Chicken Curry</h3>
+                <span class="normal"> 
+                    This South Indian curry is quite fiery, but you can reduce the chiles to suit your own palate. Typical of many Indian recipes, the whole spices are toasted and then ground before being mixed with ginger and garlic to create a spice paste. Combined with curry leaves and tomatoes, the chicken simmers until tender to create a delicious and spicy Chettinad chicken curry.</span>
+            <a href="#" class="btn-dash" >Read more...</a> </p>
+            <div class="tag_n_price">
+                <div class="nv">NON-VEG</div>
+                <span class="price">₹899<span class="small"><strike> ₹999</strike> Save ₹100 (10%)</span>
+            </div>
+        </div>
+    </div>
+    </div>
+ </div>
+        <div id="Reviews">
+            <div class="custrev">
+                <p class="custrev-h">Customer Reviews</p>
+                <p class="custrev-1"><span class="cust-name">Berlin</span> <br>
+                   <img class="rating" src="data:image/png;base64,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"/>
+                    This cozy restaurant has left the best impressions! Hospitable hosts, delicious dishes, beautiful presentation, wide wine list and wonderful dessert. I recommend to everyone! I would like to come back here again and again.
+                
+               </p>
+                <p class="custrev-2"><span class="cust-name">Tokyo</span> <br>
+                    <img class="rating" src="data:image/png;base64,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"/>
+                    First time in TAJ MAHAL and YOU have to go! It’s the cutest little spot with amazing food. The Hyderabadi Biryani is to die for. IT WAS FIRE!! The service we received was so amazing and we will definitely be back again. They made us feel welcomed and gave us an amazing experience.
+    
+            </p>
+             <p class="custrev-3"><span class="cust-name">Denver</span> <br>
+               <img class="rating" src="data:image/png;base64,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"/>
+                It’s a great experience. The ambiance is very welcoming and charming. Amazing wines, food and service. Staff are extremely knowledgeable and make great recommendations.
+        
+             </p>
+               
+            </div>
+            <div class="form">
+                <h3 class="rev-h">Your Review</h3> <br>
+
+<div class="form-container">
+  <form action="/action_page.php" target="_blank">
+    <label  for="name"> Name</label>
+    <input  class="in_form" type="text" id="name" name="name" placeholder="Your name.." required>
+
+    <label  for="email">Email</label>
+    <input  class="in_form" type="text" id="email" name="email" placeholder="Your Email ID.." required>
+
+    <label  for="country">Country</label>
+    <select  class="in_form" id="country" name="country" required>
+     <option  value="india">India</option>
+    <option  value="australia">Australia</option>
+      <option value="canada">Canada</option>
+      <option value="usa">USA</option>
+    </select>
+
+    <label  for="comment">Comment</label>
+    <textarea  class="in_form" id="comment" name="comment" placeholder="Give your review by commenting here.." style="height:200px"></textarea>
+    <h4>Give your rating:</h4>
+    <input class="num" type="button" value="1">
+    <input class="num" type="button" value="2">
+    <input class="num" type="button" value="3">
+    <input class="num" type="button" value="4">
+    <input class="num" type="button" value="5">
+    <input class="num" type="button" value="6">
+    <input class="num" type="button" value="7">
+    <input class="num" type="button" value="8">
+    <input class="num" type="button" value="9">
+    <input class="num"type="button" value="10"> <br> <br>
+    <input type="submit" value="Submit">
+  </form>
+</div>
+            </div>
+        </div>
+        <button class="btT" ><a class="T" href="#">TOP</a></button> <br>
+        <div id="footer">
+            
+           
+            <div class="links-h">
+                <header><span class="underline">FOR YOU</span></header> <br>
+                
+                <a class="links" target="_blank" href="">Privacy-Policy</a>
+                <a class="links" target="_blank" href="">Terms and Conditions</a>
+                <a class="links" target="_blank" href="">Security</a>
+                      
+            </div>
+            <div class="links-h">
+                <header ><span class="underline">COMPANY</span></header> <br>
+                
+                <a class="links" target="_blank" href="">About us</a>
+                <a class="links" target="_blank" href="">Contact us</a>
+                <a class="links" target="_blank" href="">Taj Mahal Blog</a>
+                <a class="links" target="_blank" href="">Careers</a>
+                
+            </div>
+            
+            <div class="S-links" >
+                <header ><span class="underline">SOCIAL LINKS</span></header> <br>
+            <div class="social-links">
+                <a class="links-s" target="_blank" href=" https://www.facebook.com"><img class="img" src="data:image/png;base64,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"></a>
+                <a class="links-s" target="_blank" href=" https://www.instagram.com"><img class="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXhapru0avAtjeQtTgT9A9TbTxlF0FEgP-gA&usqp=CAU"></a>
+                <a class="links-s"target="_blank" href="https://www.youtube.com"><img class="img imgut" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATYAAACjCAMAAAA3vsLfAAAAclBMVEX////2HA33AAD+xsT2EgD3WlX8t7X1AAD2GAb91tT+5OP8mZX5NSr2FwH+5+b8urf/+vr+0M7+y8j93t37bmj4PzT8g379sq/4OC78qqb7fXj5YFr+9PP7eHP4Kx35Tkb7bGX5WFD5SUD7jYj8oJz7lZFQg7sHAAADsUlEQVR4nO3d63LaMBCGYXlR4kNiDsaADSZJS3v/t1i5mbQ0AzSsJbR4v+d/p+N35GD5IBkDAAAAAAAAAAAAAAAAAAAgx7zIF9UkoGqRF/PYR+nVsq1XllIKLCW7qttl7KP1I18nRLbMkhvISkuUrPPYxzzYpqH0JsWO2qXUbGIf9yBtRuVtm70rKWtjHzvb4pluPND+yuh5Efv4ebZxRtqHkraxCzAUDcWM1qOmiF3hWhXZ2NWSxFIVu8N1ZvH+qh3LaBa7xDU20U/QD3RHlyITMdVct0nsGl+VC6rmut3JnKFLol54fFYmXewiX7JLY5f6V7qLXeQrWlGnaI/uYKLVWRGXHscyK/803Qs7RXvpPnaV/ynEnaI9kj7LkjjY5A+3qcjB5obbNHaZi55EDjY33J5il7noRdzP6LvsJXaZS2RNq46JnmI9yc0m+Sx9FXBv8jT7GrvNeZ3YweaGm9yZwlJyNrlP62eSs8m9PS71qq0n+MptK/YXwf0myH1qWkvOVseuc9aOnc0GD27l3uN94B487fYU+OfEPsSucxY3W/93pztQ0B+UEWajx/5fd+uQ4UabzZhpwHAjzubCbUOFG3U2F24f5l2lkWczpqhDhBt9tjDhFGQzZvnmO5yKbP7DKcnmwu18hlOTzZjcYzhF2Vy4B1/hVGUzZvHNTzhl2Vy4Vx/h1GXzE05hNmOq70PDqcz2O9ygN6mVZjNmshoSTm02Y2YDwinO5sI13HCqs7lwzG97lWcz5pH1Cr/6bKbiPBtENtZ71eqzdaz/Rnm27sCbL6jONt0S83NyxdmKPf8pqtpsw54uKM029HalymzV4DtuCrO5KTxuU16b7fHZx2JJyrK1L35WmNKUrfuR+FqWS0+27qf1t1SSlmxuFuVzfSkd2by/Vqkh27L2/i7q+LP5fGPmj7Fn8/XSxyfjzjbx8sLHCWPO5mMWdcZ4s/mZRZ0xwmzpwf3j1tuE4KQRZktof7CBlx4XnG3A96TB12sX/D0pvl5mwbfyLFiZgQXrgLBg1RkWrHHEgxW1WLB+GwtWC+TB2pQsUq/cBF+19bDuLg9WeWbBmuI8Eoeb+MGG/RK4sDsHD/aCYcHOQzyypliyp1XHsKsaD/bw48GOkTzYn5QHu+EyYe9lHuz0zYR95Zk2DQV/K+aTLKXmri47TsrXCZEtb9IuKy1Rsr6becFly7ZeWUopsJTsqm7lPn3nmBf5opoEVC3yYh77KAEAAAAAAAAAAAAAAAAAAI78AkJ1W7xAb9r5AAAAAElFTkSuQmCC"></a>
+                <a class="links-s"target="_blank" href="https://www.twitter.com "><img class="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSSZ-hr-g9cIpvkkkiSrw6TtdXitiyt3YWFQ&usqp=CAU" ></a>
+            </div>
+            </div>
+            <div class="last-line"> Site design / logo by <span class="links">Ganesh Jada © Copyright 2023</span> TAJ MAHAL.
+                <br>All rights reserved<br>
+                <br> <br><span><a class="backtoTop" href="#">Back to Top</a></span>
+              </div> 
+            
+        </div>
+    
+</div>
+</body>
+</html>
